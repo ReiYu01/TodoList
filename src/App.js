@@ -1,14 +1,14 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
+//components
 import MyNavbar from './components/MyNavbar'
 import MyFooter from './components/MyFooter'
 import MainContent from './components/MainContent'
 
+//pages
 import Home from './pages/Home'
 import TodoApp from './pages/TodoApp'
-
-import NotFoundPage from './pages/NotFoundPage'
 
 function App(props) {
   return (
@@ -22,9 +22,6 @@ function App(props) {
             </Route>
             <Route exact path="/">
               <Home />
-            </Route>
-            <Route exact path="*">
-              <NotFoundPage />
             </Route>
           </Switch>
         </MainContent>

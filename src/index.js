@@ -4,12 +4,15 @@ import ReactDOM from 'react-dom'
 // 這是react-redux要綁定使用的最上層元件
 import { Provider } from 'react-redux'
 
-import { store } from './stores'
+//store
+import { store } from './store/index'
+
+// //reducer
+import rootReducer from './reducers'
+
 import './index.scss'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
-
-import { rootReducer } from './reducers'
 
 ReactDOM.render(
   <React.StrictMode>

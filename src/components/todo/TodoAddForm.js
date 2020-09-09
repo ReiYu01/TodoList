@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { connect } from 'redux'
+import { connect } from 'react-redux'
 import { addTodo } from '../../actions'
 
 function TodoAddForm(props) {
