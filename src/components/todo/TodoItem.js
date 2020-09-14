@@ -24,9 +24,6 @@ function TodoItem(props) {
     finishTodo(id)
   }
 
-  React.useEffect(() => {
-    console.log(value)
-  })
   return (
     <>
       <li className={cssClasses}>

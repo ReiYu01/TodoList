@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should Render TodoItemEditForm renders correctly 1`] = `
+<li
+  className="list-group-item d-flex justify-content-between align-items-center"
+>
+  <div
+    className="form-inline"
+  >
+    <input
+      className="form-control mb2"
+      id="todoEdit"
+      onChange={[Function]}
+      type="text"
+      value="每週三交進度"
+    />
+    <button
+      className="btn btn-info mb2"
+      onClick={[Function]}
+      type="button"
+    >
+      save
+    </button>
+  </div>
+</li>
+`;

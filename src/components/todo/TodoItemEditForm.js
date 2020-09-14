@@ -6,8 +6,14 @@ function TodoItemEditForm(props) {
   const [editText, setEditText] = useState(props.value.text)
 
   //console.log(props)
+
   // 先解構賦值，直接套用由props得到的變數值
   const { value, changeText, toggleTodo } = props
+
+  const onChange = (event) => {
+    setEditText(event.target.value)
+  }
+
   const handleEditSave = (id, text) => {
     toggleTodo(id)
     changeText(id, text)
@@ -22,9 +28,7 @@ function TodoItemEditForm(props) {
             className="form-control mb2"
             type="text"
             value={editText}
-            onChange={(event) => {
-              setEditText(event.target.value)
-            }}
+            onChange={onChange}
           />
           <button
             type="button"

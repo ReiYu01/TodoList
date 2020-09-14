@@ -4,7 +4,28 @@ import { addTodo } from '../../actions'
 
 function TodoAddForm(props) {
   const [text, setText] = useState('')
-  const { todos, setTodos, addTodo } = props
+
+  const { addTodo } = props
+
+  const onChange = (event) => {
+    setText(event.target.value)
+  }
+
+  const onKeyPress = (event) => {
+    // 處理按下 Enter鍵
+    if (event.key === 'Enter' && event.target.value !== '') {
+      // 建立一個新的todo項目
+      const newTodoItem = {
+        id: +new Date(),
+        text: event.target.value,
+        edited: false,
+        completed: false,
+      }
+
+      addTodo(newTodoItem)
+      setText('')
+    }
+  }
 
   return (
     <>
@@ -15,25 +36,9 @@ function TodoAddForm(props) {
           className="form-control"
           type="text"
           value={text}
-          placeholder=""
-          onChange={(event) => {
-            setText(event.target.value)
-          }}
-          onKeyPress={(event) => {
-            // 處理按下 Enter鍵
-            if (event.key === 'Enter' && event.target.value !== '') {
-              // 建立一個新的todo項目
-              const newTodoItem = {
-                id: +new Date(),
-                text: event.target.value,
-                edited: false,
-                completed: false,
-              }
-
-              addTodo(newTodoItem)
-              setText('')
-            }
-          }}
+          placeholder="Please input"
+          onChange={onChange}
+          onKeyPress={onKeyPress}
         />
       </div>
     </>
