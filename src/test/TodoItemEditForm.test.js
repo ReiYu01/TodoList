@@ -1,6 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import configureStore from 'redux-mock-store'
+import TodoAddForm from '../components/todo/TodoAddForm'
+import Enzyme, { mount, shallow, render } from 'enzyme'
+import setupTest from './setupTests'
 import TodoItemEditForm from '../components/todo/TodoItemEditForm'
 
 describe('Should Render TodoItemEditForm', () => {
@@ -14,14 +17,10 @@ describe('Should Render TodoItemEditForm', () => {
     edited: false,
   }
 
-  it('renders correctly', () => {
-    const tree = renderer
-      .create(<TodoItemEditForm store={store} value={value} />)
-      .toJSON()
-    expect(tree).toMatchSnapshot()
+  //====render出畫面，檢查HTML====
+  it('should render correctly in "debug" mode', () => {
+    const component = shallow(<TodoAddForm store={store} value={value} debug />)
+
+    expect(component).toMatchSnapshot()
   })
-  //   tree.props.onChange()
-  //   // re-rendering
-  //   tree = component.toJSON()
-  //   expect(tree).toMatchSnapshot()
 })

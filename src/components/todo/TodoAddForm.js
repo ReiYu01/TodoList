@@ -9,6 +9,7 @@ function TodoAddForm(props) {
 
   const onChange = (event) => {
     setText(event.target.value)
+    console.log(event)
   }
 
   const onKeyPress = (event) => {
@@ -35,6 +36,7 @@ function TodoAddForm(props) {
           id="todoInput"
           className="form-control"
           type="text"
+          maxlength="85"
           value={text}
           placeholder="Please input"
           onChange={onChange}

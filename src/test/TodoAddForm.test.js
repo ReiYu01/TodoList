@@ -2,29 +2,44 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import configureStore from 'redux-mock-store'
 import TodoAddForm from '../components/todo/TodoAddForm'
+import Enzyme, { mount, shallow, render } from 'enzyme'
+import setupTest from './setupTests'
 
-describe('Should Render TodoAddForm', () => {
+// import { shallowToJson } from 'enzyme-to-json'
+// import { cleanup, fireEvent, render } from '@testing-library/react'
+
+// import Adapter from 'enzyme-adapter-react-16'
+
+// 以該解析器提供給 Enzyme 做渲染 Component 的設置
+// Enzyme.configure({ adapter: new Adapter() })
+
+describe('Should Render TodoAddForm in "debug" mode', () => {
   const mockStore = configureStore()
   const store = mockStore()
+  const text = ''
 
-  it('renders correctly', () => {
-    const component = renderer.create(<TodoAddForm store={store} />)
-    let tree = component.toJSON()
-    // tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
-    // })
+  //====render出畫面，檢查HTML====
+  it('should render correctly in "debug" mode', () => {
+    const component = shallow(<TodoAddForm store={store} debug />)
 
-    // it('onChange correctly', () => {
-    tree.props.onKeyPress()
-    tree = component.toJSON()
-    expect(tree).toMatchSnapshot()
+    expect(component).toMatchSnapshot()
   })
 
-  // let chart = tree.toJSON()
-  // expect(chart).toMatchSnapshot()
+  // ====在input輸入文字，更改文字====s
+  it('should be onChange correctly', () => {
+    const component = mount(<TodoAddForm store={store} />)
+    component
+      .find('input#todoInput')
+      .simulate('change', { target: { name: 'maxlength', value: 50 } })
+    expect(component).toMatchSnapshot()
+    component.unmount()
+  })
 
-  // chart.props.onKeyPress()
-  // // re-rendering
-  // chart = tree.toJSON()
-  // expect(chart).toMatchSnapshot()
+  //====按下enter鍵，成功送出內容====
+  it('should be onKeyPress correctly with Enter', () => {
+    const component = mount(<TodoAddForm store={store} />)
+    component.find('input#todoInput').simulate('keydown', { keyCode: 13 })
+    expect(component).toMatchSnapshot()
+    component.unmount()
+  })
 })

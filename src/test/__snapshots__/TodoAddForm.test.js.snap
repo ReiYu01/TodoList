@@ -1,22 +1,116 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should Render TodoAddForm renders correctly 1`] = `
-<div
-  className="form-group"
+exports[`Should Render TodoAddForm in "debug" mode should be onChange correctly 1`] = `
+<Connect(TodoAddForm)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
 >
-  <label
-    htmlFor="todoInput"
+  <TodoAddForm
+    addTodo={[Function]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
   >
-    Please input
-  </label>
-  <input
-    className="form-control"
-    id="todoInput"
-    onChange={[Function]}
-    onKeyPress={[Function]}
-    placeholder="Please input"
-    type="text"
-    value=""
-  />
-</div>
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="todoInput"
+      >
+        Please input
+      </label>
+      <input
+        className="form-control"
+        id="todoInput"
+        maxlength="85"
+        onChange={[Function]}
+        onKeyPress={[Function]}
+        placeholder="Please input"
+        type="text"
+        value={50}
+      />
+    </div>
+  </TodoAddForm>
+</Connect(TodoAddForm)>
+`;
+
+exports[`Should Render TodoAddForm in "debug" mode should be onKeyPress correctly with Enter 1`] = `
+<Connect(TodoAddForm)
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <TodoAddForm
+    addTodo={[Function]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        htmlFor="todoInput"
+      >
+        Please input
+      </label>
+      <input
+        className="form-control"
+        id="todoInput"
+        maxlength="85"
+        onChange={[Function]}
+        onKeyPress={[Function]}
+        placeholder="Please input"
+        type="text"
+        value=""
+      />
+    </div>
+  </TodoAddForm>
+</Connect(TodoAddForm)>
+`;
+
+exports[`Should Render TodoAddForm in "debug" mode should render correctly in "debug" mode 1`] = `
+<TodoAddForm
+  addTodo={[Function]}
+  debug={true}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+/>
 `;

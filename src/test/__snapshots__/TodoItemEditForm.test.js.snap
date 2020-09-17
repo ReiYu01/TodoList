@@ -24,3 +24,28 @@ exports[`Should Render TodoItemEditForm renders correctly 1`] = `
   </div>
 </li>
 `;
+
+exports[`Should Render TodoItemEditForm should render correctly in "debug" mode 1`] = `
+<TodoAddForm
+  addTodo={[Function]}
+  debug={true}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+  value={
+    Object {
+      "completed": false,
+      "edited": false,
+      "id": 678678678,
+      "text": "每週三交進度",
+    }
+  }
+/>
+`;
