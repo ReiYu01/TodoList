@@ -4,7 +4,7 @@ import {
   FINISH_TODO,
   TOGGLE_TODO,
   CHANGE_TEXT,
-} from '../actions/actionType'
+} from './actionType'
 
 //新增
 export const addTodo = (newTodoItem) => ({

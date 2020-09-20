@@ -25,7 +25,7 @@ describe('Should Render TodoAddForm in "debug" mode', () => {
     expect(component).toMatchSnapshot()
   })
 
-  // ====在input輸入文字，更改文字====s
+  // ====在input輸入文字，更改文字====
   it('should be onChange correctly', () => {
     const component = mount(<TodoAddForm store={store} />)
     component

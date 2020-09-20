@@ -1,8 +1,36 @@
 import React, { useState, useEffect } from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
-import { Link, NavLink, withRouter } from 'react-router-dom'
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
+import { Link, NavLink, useHistory } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 function MyNavbar(props) {
+  const { auth, name } = props
+  const history = useHistory()
+  const loginButton = (
+    <>
+      <Button
+        variant="outline-light"
+        onClick={() => {
+          history.push('/memberlogin')
+        }}
+      >
+        登入
+      </Button>
+    </>
+  )
+  const logoutButton = (
+    <>
+      <Button
+        variant="outline-light"
+        onClick={() => {
+          history.push('/memberlogin')
+        }}
+      >
+        登出
+      </Button>
+    </>
+  )
+  const displayButton = auth ? logoutButton : loginButton
   return (
     <>
       <Navbar bg="primary" variant="dark" fixed="top">
@@ -13,14 +41,23 @@ function MyNavbar(props) {
           <Nav.Link as={NavLink} to="/" exact>
             Home
           </Nav.Link>
-
-          <Nav.Link as={NavLink} to="/todoapp">
-            Todo List
-          </Nav.Link>
+          {auth ? (
+            <Nav.Link as={NavLink} to="/todoapp">
+              Todo List
+            </Nav.Link>
+          ) : (
+            ''
+          )}
         </Nav>
+        <Form inline>{displayButton}</Form>
       </Navbar>
     </>
   )
 }
 
-export default withRouter(MyNavbar)
+const mapStateToProps = (state) => {
+  return {
+    auth: state.user.auth,
+  }
+}
+export default connect(mapStateToProps)(MyNavbar)

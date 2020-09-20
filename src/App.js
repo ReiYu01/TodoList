@@ -1,5 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+
+import ProtectedRoute from './utils/ProtectedRoute'
 
 //components
 import MyNavbar from './components/MyNavbar'
@@ -9,12 +13,13 @@ import MainContent from './components/MainContent'
 //pages
 import Home from './pages/Home'
 import TodoApp from './pages/TodoApp'
+import MemberLogin from './pages/MemberLogin'
 
 function App(props) {
   return (
     <Router>
       <>
-        <MyNavbar />
+        <MyNavbar name={'ruiyu'} />
         <MainContent>
           <Switch>
             <Route exact path="/todoapp">
@@ -23,6 +28,12 @@ function App(props) {
             <Route exact path="/">
               <Home />
             </Route>
+            <Route path="/memberlogin">
+              <MemberLogin />
+            </Route>
+            <ProtectedRoute path="/todoapp">
+              <TodoApp />
+            </ProtectedRoute>
           </Switch>
         </MainContent>
         <MyFooter />
@@ -30,5 +41,4 @@ function App(props) {
     </Router>
   )
 }
-
 export default App
