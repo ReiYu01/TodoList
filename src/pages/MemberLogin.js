@@ -12,12 +12,12 @@ function MemberLogin(props) {
   const [loginErrors, setLoginErrors] = useState([])
   const history = useHistory()
   const location = useLocation()
-  console.log(location)
+  // console.log(location)
 
   const loginProcess = () => {
     const errors = []
-    if (user_name === '') errors.push('帳號沒填')
-    if (password === '') errors.push('密碼沒填')
+    if (user_name === '') errors.push('Please type user_name')
+    if (password === '') errors.push('Please type password')
     if (errors.length > 0) {
       setLoginErrors(errors)
       return
@@ -28,6 +28,7 @@ function MemberLogin(props) {
     userLogInAsync(user_name, password)
     loginSuccess()
   }
+
   const logoutProcess = () => {
     userLogout()
     logoutSuccess()
@@ -46,13 +47,26 @@ function MemberLogin(props) {
   )
   // login成功時的callback
   const loginSuccess = () => {
-    alert('登入成功，跳回首頁')
-    history.push('/', { from: '從登入頁來的' })
+    alert('LogIn Success，202')
+    history.push('/', { from: '登入頁' })
+  }
+
+  // login失敗時的callback
+
+  const loginFail = () => {
+    alert('	Bad Request，400')
+    history.push('/', { from: '登入頁' })
+  }
+
+  // login失敗時的callback
+  const unauthorized = () => {
+    alert('	Unauthorized，401')
+    history.push('/', { from: '登入頁' })
   }
 
   // logout成功時的callback
   const logoutSuccess = () => {
-    alert('登出成功，跳回首頁')
+    alert('LogOut Success')
     history.push('/')
   }
 
@@ -74,7 +88,7 @@ function MemberLogin(props) {
         className="form-control mb2"
         type="text"
         value={user_name}
-        placeholder="請輸入帳號"
+        placeholder="Please type here"
         onChange={(event) => {
           setUsername(event.target.value)
         }}
@@ -83,7 +97,7 @@ function MemberLogin(props) {
         className="form-control mb2"
         type="text"
         value={password}
-        placeholder="請輸入密碼"
+        placeholder="Please type here"
         onChange={(event) => {
           setPassword(event.target.value)
         }}

@@ -10,6 +10,7 @@ const user = (state = initialState, action) => {
     case LOG_IN:
       return { ...state, ...action.payload }
     case LOG_OUT:
+      localStorage.clear()
       return { ...state, ...action.payload }
     default:
       return state

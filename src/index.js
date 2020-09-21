@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 //store
 import { store } from './store/index'
 
-// //reducer
+//reducer
 import rootReducer from './reducers'
 
 import './index.scss'
