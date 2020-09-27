@@ -6,9 +6,8 @@ import TodoList from '../components/todo/TodoList'
 import { Redirect } from 'react-router-dom'
 
 function TodoApp(props) {
-  const { auth } = props
+  // const { auth } = props
 
-  if (!auth) return <Redirect to={'/'} />
   return (
     <>
       <TodoAddForm />
@@ -17,8 +16,8 @@ function TodoApp(props) {
   )
 }
 
-const mapStateToProps = (store) => ({
-  auth: store.user.auth,
+const mapStateToProps = (state) => ({
+  auth: state.user.auth,
 })
 
 export default connect(mapStateToProps)(TodoApp)

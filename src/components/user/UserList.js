@@ -1,15 +1,16 @@
 import React from 'react'
-import UserItem from './TodoItem'
+// import UserItem from './UserItem'
 // import TodoItemEditForm from './TodoItemEditForm'
 import { connect } from 'react-redux'
+import { getUserList } from '../../actions/userAction'
 
-function TodoList(props) {
-  const { users, handleEditedSave } = props
+function UserList(props) {
+  const { users, handleEditedSave, getUserList } = props
 
   return (
     <>
       <div>
-        <Table striped bordered hover>
+        <table striped bordered hover>
           <thead>
             <tr>
               <th>id</th>
@@ -33,7 +34,7 @@ function TodoList(props) {
             }
             return <UserItem key={value.id} value={value} />
           })} */}
-        </Table>
+        </table>
       </div>
     </>
   )
@@ -44,5 +45,8 @@ const mapStateToProps = (state) => {
     // user: state.user,
   }
 }
+const mapDispatchToProps = {
+  getUserList,
+}
 
-export default connect(mapStateToProps)(TodoList)
+export default connect(mapStateToProps, mapDispatchToProps)(UserList)

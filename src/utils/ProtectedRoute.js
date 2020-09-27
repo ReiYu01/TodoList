@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 // 從React Router官方網站文件中標準的寫法
 // 除了要判斷從上層傳入的一個是否登入的狀態值
@@ -9,14 +10,15 @@ import { Route, Redirect } from 'react-router-dom'
 // 注意Redirect要不同元件間才能作301重新導向
 // props 解構拉出children，和其它的組成一個其餘物件
 const ProtectedRoute = ({ children, ...rest }) => {
-  // console.log(children)
-  // console.log(rest)
+  const auth = useSelector((state) => {
+    return state.user.auth
+  })
 
   return (
     <Route
       {...rest}
       render={(props) =>
-        children.props.isAuth === true ? (
+        auth ? (
           children
         ) : (
           <Redirect

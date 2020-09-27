@@ -12,7 +12,6 @@ function MemberLogin(props) {
   const [loginErrors, setLoginErrors] = useState([])
   const history = useHistory()
   const location = useLocation()
-  // console.log(location)
 
   const loginProcess = async () => {
     const errors = []
@@ -22,11 +21,9 @@ function MemberLogin(props) {
       setLoginErrors(errors)
       return
     }
-    // 清空錯誤訊息陣列 + 登入
-    // 清空錯誤訊息陣列為必要
     setLoginErrors([])
     await userLogInAsync(user_name, password)
-    loginSuccess()
+    // loginSuccess()
   }
 
   const logoutProcess = () => {
@@ -46,10 +43,10 @@ function MemberLogin(props) {
     ''
   )
   // login成功時的callback
-  const loginSuccess = () => {
-    alert('LogIn Success，200')
-    history.push('/', { from: '登入頁' })
-  }
+  // const loginSuccess = () => {
+  //   alert('LogIn Success，200')
+  //   history.push('/', { from: '登入頁' })
+  // }
 
   // login失敗時的callback
 

@@ -4,20 +4,23 @@ import { connect } from 'react-redux'
 // import TodoAddForm from '../components'
 // import TodoList from '../components'
 import { Redirect } from 'react-router-dom'
-import { getUser } from '../actions'
+import UserList from '../components/user/UserList'
 
 function UserApp(props) {
-  const { getUser, auth } = props
-
-  //   getUser()
+  const { auth } = props
 
   if (!auth) return <Redirect to={'/'} />
-  return <>{/* <TodoAddForm />
-      <TodoList /> */}</>
+  return (
+    <>
+      <UserList />
+    </>
+  )
 }
 
-const mapStateToProps = (store) => ({
-  auth: store.user.auth,
-})
+const mapStateToProps = (state) => {
+  return {
+    auth: state.user.auth,
+  }
+}
 
 export default connect(mapStateToProps)(UserApp)

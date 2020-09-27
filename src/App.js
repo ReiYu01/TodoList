@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
@@ -16,19 +16,19 @@ import TodoApp from './pages/TodoApp'
 import MemberLogin from './pages/MemberLogin'
 import UserApp from './pages/UserApp'
 
+import { checkAuth } from './actions/userAction'
+
 function App(props) {
+  const { checkAuth } = props
+  useEffect(() => {
+    checkAuth()
+  }, [])
   return (
     <Router>
       <>
         <MyNavbar name={'ruiyu'} />
         <MainContent>
           <Switch>
-            <Route exact path="/todoapp">
-              <TodoApp />
-            </Route>
-            <Route exact path="/userapp">
-              <UserApp />
-            </Route>
             <Route exact path="/">
               <Home />
             </Route>
@@ -48,4 +48,8 @@ function App(props) {
     </Router>
   )
 }
-export default App
+
+const mapDispatchToProps = {
+  checkAuth,
+}
+export default connect(null, mapDispatchToProps)(App)
