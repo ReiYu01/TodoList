@@ -14,6 +14,7 @@ import MainContent from './components/MainContent'
 import Home from './pages/Home'
 import TodoApp from './pages/TodoApp'
 import MemberLogin from './pages/MemberLogin'
+import UserApp from './pages/UserApp'
 
 function App(props) {
   return (
@@ -25,6 +26,9 @@ function App(props) {
             <Route exact path="/todoapp">
               <TodoApp />
             </Route>
+            <Route exact path="/userapp">
+              <UserApp />
+            </Route>
             <Route exact path="/">
               <Home />
             </Route>
@@ -33,6 +37,9 @@ function App(props) {
             </Route>
             <ProtectedRoute path="/todoapp">
               <TodoApp />
+            </ProtectedRoute>
+            <ProtectedRoute path="/userapp">
+              <UserApp />
             </ProtectedRoute>
           </Switch>
         </MainContent>

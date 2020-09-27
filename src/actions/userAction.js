@@ -26,48 +26,38 @@ export const userLogInAsync = (user_name, password) => {
         }),
       }
     )
+    const responseStatus = response.status
+    // console.log(responseStatus)
+
     const obj = await response.json()
-    // console.log('obj', obj)
     // if (obj.auth) dispatch(userLogin(obj))
 
-    const getToken = sessionStorage.setItem('access_token', obj.access_token)
-    dispatch(userLogin(obj.user_name))
+    if (responseStatus === 200) {
+      const getToken = localStorage.setItem('access_token', obj.access_token)
+      const payload = {
+        user_name,
+        auth: true,
+      }
+      dispatch(userLogin(payload))
+    } else if (responseStatus === 400) {
+    }
 
     // const catchBadRequest = data.status(400).send()
     // const unauthorized = data.status(401).send()
   }
 }
-// async function catchErr() {
-//   const response = await fetch('http://192.168.133.226:5000/api/v1/auth/login')
 
-//   if (!response.ok) {
-//     const message = `An error has occured: ${response.status}`;
-//     throw new Error(message);
-//   }
-
-//   const movies = await response.json();
-//   return movies;
-// }
-
-// catchErr().catch(error => {
-//   error.message; // 'An error has occurred: 404'
-// });
-
-export const autoLogin = () => {
+//取得使用者
+export const getUser = () => {
   return async function getUserToLogIn(dispatch) {
-    const response = await fetch(`http://192.168.133.226:5000/api/v1/user/`, {
+    const response = await fetch('http://192.168.133.226:5000/api/v1/user/', {
       headers: new Headers({
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: `Bearer ${sessionStorage.getItem('access_token')}`,
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
       }),
     })
     const obj = await response.json()
-    console.log('obj', obj)
-    // if (obj.auth) dispatch(userLogin(obj))
-
-    const getToken = sessionStorage.setItem('access_token', obj.access_token)
-    dispatch(userLogin(obj.user_name))
   }
 }
 

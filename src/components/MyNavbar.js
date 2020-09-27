@@ -14,7 +14,7 @@ function MyNavbar(props) {
           history.push('/memberlogin')
         }}
       >
-        登入
+        Log In
       </Button>
     </>
   )
@@ -26,7 +26,7 @@ function MyNavbar(props) {
           history.push('/memberlogin')
         }}
       >
-        登出
+        Log Out
       </Button>
     </>
   )
@@ -44,6 +44,13 @@ function MyNavbar(props) {
           {auth ? (
             <Nav.Link as={NavLink} to="/todoapp">
               Todo List
+            </Nav.Link>
+          ) : (
+            ''
+          )}
+          {auth ? (
+            <Nav.Link as={NavLink} to="/userapp">
+              User List
             </Nav.Link>
           ) : (
             ''

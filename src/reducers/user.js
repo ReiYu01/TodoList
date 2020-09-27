@@ -2,7 +2,7 @@ import { LOG_IN, LOG_OUT } from '../actions/actionType'
 
 const initialState = {
   user_name: '',
-  auth: false,
+  auth: true,
 }
 
 const user = (state = initialState, action) => {

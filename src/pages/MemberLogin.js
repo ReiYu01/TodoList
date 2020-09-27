@@ -14,7 +14,7 @@ function MemberLogin(props) {
   const location = useLocation()
   // console.log(location)
 
-  const loginProcess = () => {
+  const loginProcess = async () => {
     const errors = []
     if (user_name === '') errors.push('Please type user_name')
     if (password === '') errors.push('Please type password')
@@ -25,7 +25,7 @@ function MemberLogin(props) {
     // 清空錯誤訊息陣列 + 登入
     // 清空錯誤訊息陣列為必要
     setLoginErrors([])
-    userLogInAsync(user_name, password)
+    await userLogInAsync(user_name, password)
     loginSuccess()
   }
 
@@ -47,7 +47,7 @@ function MemberLogin(props) {
   )
   // login成功時的callback
   const loginSuccess = () => {
-    alert('LogIn Success，202')
+    alert('LogIn Success，200')
     history.push('/', { from: '登入頁' })
   }
 
@@ -72,11 +72,11 @@ function MemberLogin(props) {
 
   const displayButton = auth ? (
     <button className="btn btn-primary mb2" onClick={logoutProcess}>
-      登出
+      Log Out
     </button>
   ) : (
     <button className="btn btn-primary mb2" onClick={loginProcess}>
-      登入
+      Log In
     </button>
   )
 
