@@ -11,7 +11,7 @@ const initialState = {
   is_admin: false,
 }
 
-const user = (state = initialState, action) => {
+const users = (state = initialState, action) => {
   switch (action.type) {
     case LOG_IN:
       return { ...state, ...action.payload, auth: true }
@@ -25,4 +25,4 @@ const user = (state = initialState, action) => {
   }
 }
 
-export default user
+export default users

@@ -1,16 +1,21 @@
-import React from 'react'
-// import UserItem from './UserItem'
+import React, { useEffect } from 'react'
+import UserItem from './UserItem'
 // import TodoItemEditForm from './TodoItemEditForm'
+import { Table } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { getUserList } from '../../actions/userAction'
 
 function UserList(props) {
-  const { users, handleEditedSave, getUserList } = props
+  const { users, getUserList } = props
+
+  useEffect(() => {
+    getUserList()
+  }, [])
 
   return (
     <>
       <div>
-        <table striped bordered hover>
+        <Table striped bordered hover>
           <thead>
             <tr>
               <th>id</th>
@@ -22,19 +27,11 @@ function UserList(props) {
               <th>is_admin</th>
             </tr>
           </thead>
+          <UserItem />
           {/* {users.map((value, index) => {
-            if (value.edited) {
-              return (
-                <TodoItemEditForm
-                  key={value.id}
-                  value={value}
-                  handleEditSave={handleEditedSave}
-                />
-              )
-            }
             return <UserItem key={value.id} value={value} />
           })} */}
-        </table>
+        </Table>
       </div>
     </>
   )
@@ -42,7 +39,7 @@ function UserList(props) {
 
 const mapStateToProps = (state) => {
   return {
-    // user: state.user,
+    users: state.users,
   }
 }
 const mapDispatchToProps = {

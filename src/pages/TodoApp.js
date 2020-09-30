@@ -17,7 +17,7 @@ function TodoApp(props) {
 }
 
 const mapStateToProps = (state) => ({
-  auth: state.user.auth,
+  auth: state.users.auth,
 })
 
 export default connect(mapStateToProps)(TodoApp)

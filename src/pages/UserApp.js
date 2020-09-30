@@ -19,7 +19,7 @@ function UserApp(props) {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.user.auth,
+    auth: state.users.auth,
   }
 }
 

@@ -42,11 +42,6 @@ function MemberLogin(props) {
   ) : (
     ''
   )
-  // login成功時的callback
-  // const loginSuccess = () => {
-  //   alert('LogIn Success，200')
-  //   history.push('/', { from: '登入頁' })
-  // }
 
   // login失敗時的callback
 
@@ -115,7 +110,7 @@ function MemberLogin(props) {
 }
 
 const mapStateToProps = (store) => ({
-  auth: store.user.auth,
+  auth: store.users.auth,
 })
 const mapDispatchToProps = {
   userLogInAsync,

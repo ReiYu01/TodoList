@@ -7,6 +7,7 @@ export const userLogin = (payload) => {
   return { type: LOG_IN, payload }
 }
 
+//確認Auth
 export const checkAuth = () => {
   return async function getUserInfoFromServer(dispatch) {
     const acces_token = localStorage.getItem('access_token')
@@ -34,6 +35,7 @@ export const checkAuth = () => {
   }
 }
 
+//登入成功跳通知
 const loginSuccess = () => {
   alert('LogIn Success，200')
 }
@@ -41,7 +43,7 @@ const loginSuccess = () => {
 //登入頁
 export const userLogInAsync = (user_name, password) => {
   return async function getUserToLogin(dispatch) {
-    // 注意header資料格式要設定，伺服器才知道是json格式
+    // 注意header資料格式要設定，伺服器才知道是json
     const data = {
       user_name,
       password,
@@ -67,12 +69,15 @@ export const userLogInAsync = (user_name, password) => {
       }
       dispatch(push('/'))
       dispatch(userLogin(payload))
-      // loginSuccess()
-
     } else if (responseStatus === 400) {
+      const catchBadRequest = () => {
+        alert('Catch Bad Request，400')
+      }
+    } else if (responseStatus === 401) {
+      const unauthorized = () => {
+        alert('Unauthorized，401')
+      }
     }
-    // const catchBadRequest = data.status(400).send()
-    // const unauthorized = data.status(401).send()
   }
 }
 

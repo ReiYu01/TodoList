@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux'
 // props 解構拉出children，和其它的組成一個其餘物件
 const ProtectedRoute = ({ children, ...rest }) => {
   const auth = useSelector((state) => {
-    return state.user.auth
+    return state.users.auth
   })
 
   return (

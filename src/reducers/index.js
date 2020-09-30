@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import todos from './todos'
-import user from './user'
+import users from './users'
 
 const rootReducer = combineReducers({
   todos,
-  user,
+  users,
 })
 
 export default rootReducer

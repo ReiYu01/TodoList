@@ -64,7 +64,7 @@ function MyNavbar(props) {
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.user.auth,
+    auth: state.users.auth,
   }
 }
 export default connect(mapStateToProps)(MyNavbar)
