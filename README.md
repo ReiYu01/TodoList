@@ -39,13 +39,14 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Practice:
 
-1.React v
-2.Redux v
-3.JWT token v  
-##（Username：admin/ Password：pass）
+1.React v <br />
+2.Redux v <br />
+3.JWT token v  <br />
 
-4.react-router v
-5.test（jest）v
+##（Username：admin / Password：pass）<br />
+
+4.react-router v <br />
+5.test（jest）v<br />
 
 
 
